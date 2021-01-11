@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_application/provider/product_provider.dart';
-import 'package:shopping_application/screens/product_full_details.dart';
-import 'package:shopping_application/screens/product_overview_screen.dart';
-import 'provider/product_provider.dart';
 
-void main() {
-  runApp(MainApp());
-}
+import './screens/products_overview_screen.dart';
+import './screens/product_detail_screen.dart';
+import './providers/products.dart';
 
-class MainApp extends StatelessWidget {
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ProductProvider(),
+      create: (ctx) => Products(),
       child: MaterialApp(
-        theme: ThemeData(
+          title: 'MyShop',
+          theme: ThemeData(
             primarySwatch: Colors.purple,
-            accentColor: Colors.orangeAccent,
-            fontFamily: "Lato"),
-        home: ProductOverviewScreen(),
-        routes: {
-          ProductOverviewScreen.ProductOverviewScreenRouteName: (context) =>
-              ProductOverviewScreen(),
-          ProductFullDetailsScreen.productFullDetailsScreenRouteName:
-              (context) => ProductFullDetailsScreen(),
-        },
-      ),
+            accentColor: Colors.deepOrange,
+            fontFamily: 'Lato',
+          ),
+          home: ProductsOverviewScreen(),
+          routes: {
+            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          }),
     );
   }
 }
