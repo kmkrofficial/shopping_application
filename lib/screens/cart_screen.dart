@@ -16,20 +16,32 @@ class CartScreen extends StatelessWidget {
       body: Column(
         children: [
           Card(
-            child: Row(
-              children: [
-                Text(
-                  "Total",
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Chip(
-                  label: Text("\$${cart.totalPrice}"),
-                  backgroundColor: Theme.of(context).accentColor,
-                )
-              ],
+            margin: EdgeInsets.all(15),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Total",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Spacer(),
+                  Chip(
+                    label: Text("\$${cart.totalPrice}"),
+                    backgroundColor: Theme.of(context).accentColor,
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text("Order Now!"),
+                    color: Colors.white,
+                  )
+                ],
+              ),
             ),
           ),
           SizedBox(
@@ -43,6 +55,7 @@ class CartScreen extends StatelessWidget {
                 id: cart.items.values.toList()[i].id,
                 price: cart.items.values.toList()[i].pricing,
                 quantity: cart.items.values.toList()[i].quantity,
+                productId: cart.items.keys.toList()[i],
               ),
             ),
           ),
