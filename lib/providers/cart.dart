@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CartItem {
   String id;
@@ -57,6 +57,11 @@ class Cart with ChangeNotifier {
             pricing: pricing),
       );
     }
+    notifyListeners();
+  }
+
+  void clear() {
+    _items = {};
     notifyListeners();
   }
 
